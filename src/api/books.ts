@@ -3,6 +3,7 @@ import {
   QUERY_KEY,
   type Book,
   type BooksQueryParams,
+  type GetBookOptions,
   type GetBooksOptions,
 } from "./types";
 
@@ -56,4 +57,36 @@ export const getBooks = async ({
   }
 
   return books;
+};
+export const getBook = async ({
+  isbn,
+  signal,
+}: GetBookOptions): Promise<Book> => {
+  const res = await fetch(`${BASE_URL}/books/${encodeURIComponent(isbn)}`, {
+    signal,
+  });
+
+  if (!res.ok) {
+    if (res.status === 404) {
+      throw new Error(`Book with ISBN ${isbn} not found.`);
+    }
+
+    console.error(
+      `[getBook] GET /books/${isbn} failed: ${res.status} ${res.statusText}`,
+    );
+
+    throw new Error(
+      "Das Buch konnte nicht geladen werden. Bitte versuche es erneut.",
+    );
+  }
+
+  const data: unknown = await res.json();
+
+  if (!isBook(data)) {
+    console.error("[getBook] Invalid response: expected a book object.");
+
+    throw new Error("Der Server hat ungültige Buchdaten zurückgegeben.");
+  }
+
+  return data;
 };
