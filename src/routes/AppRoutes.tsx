@@ -1,10 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { BooksPage } from "../pages/BooksPage";
-import { FavoritesPage } from "../pages/FavoritesPage";
-import { BookDetailPage } from "../pages/BookDetailPage";
+import { BookDetailPage, BooksPage, FavoritesPage } from "../pages";
 import { paths } from "./paths";
 
-export function AppRoutes() {
+export const AppRoutes = () => {
   return (
     <Routes>
       <Route path={paths.books} element={<BooksPage />} />
@@ -20,4 +18,4 @@ export function AppRoutes() {
       />
     </Routes>
   );
-}
+};

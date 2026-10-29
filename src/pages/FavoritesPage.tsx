@@ -1,5 +1,5 @@
 import { generatePath, Link } from "react-router-dom";
-import { paths } from "../routes/paths";
+import { paths } from "../routes";
 
 const sampleFavorites = [
   {

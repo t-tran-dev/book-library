@@ -21,4 +21,3 @@ export type Book = {
   predecessorIsbn?: string | null;
   successorIsbn?: string | null;
 };
-
