@@ -22,14 +22,22 @@ export type Book = {
   successorIsbn?: string | null;
 };
 
+export type RequestOptions = {
+  signal?: AbortSignal;
+};
+
 export type BooksQueryParams = {
   query?: string;
   publisher?: string;
 };
 
-export type GetBooksOptions = BooksQueryParams & {
-  signal?: AbortSignal;
+export type BookQueryParams = {
+  isbn: string;
 };
+
+export type GetBooksOptions = BooksQueryParams & RequestOptions;
+
+export type GetBookOptions = BookQueryParams & RequestOptions;
 
 export const QUERY_KEY = {
   query: "q",

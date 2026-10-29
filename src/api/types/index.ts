@@ -1,7 +1,9 @@
 export type {
   Book,
+  BookQueryParams,
   BooksQueryParams,
   Currency,
+  GetBookOptions,
   GetBooksOptions,
 } from "./types";
 export { QUERY_KEY } from "./types";
