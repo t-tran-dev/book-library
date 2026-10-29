@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
+import { useFavorites } from "../features/favorites";
 import { paths } from "../routes";
 
 export const Header = () => {
+  const { favorites } = useFavorites();
   return (
     <header className="header">
       <div className="container">
@@ -30,7 +32,8 @@ export const Header = () => {
                   `mainnav-link${isActive ? " mainnav-link--active" : ""}`
                 }
               >
-                Favorites <span className="mainnav-number">2</span>
+                Favorites{" "}
+                <span className="mainnav-number">{favorites.length}</span>
               </NavLink>
             </nav>
           </div>
