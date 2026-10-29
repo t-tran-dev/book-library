@@ -8,7 +8,7 @@ import {
   isOptionalNonNegativeNumber,
   isOptionalNonNegativeInteger,
   isOptionalStringArray,
-} from "./validatorHelpers";
+} from "../../utils";
 
 export const isCurrency = (value: unknown): value is Currency =>
   value === "EUR" ||
