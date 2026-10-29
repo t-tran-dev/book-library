@@ -24,6 +24,7 @@ export type Book = {
 
 export type BooksQueryParams = {
   query?: string;
+  publisher?: string;
 };
 
 export type GetBooksOptions = BooksQueryParams & {
@@ -32,4 +33,5 @@ export type GetBooksOptions = BooksQueryParams & {
 
 export const QUERY_KEY = {
   query: "q",
+  publisher: "publisher",
 } satisfies Record<keyof BooksQueryParams, string>;

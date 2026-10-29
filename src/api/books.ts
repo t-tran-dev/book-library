@@ -1,15 +1,12 @@
 import {
   isBook,
+  QUERY_KEY,
   type Book,
   type BooksQueryParams,
   type GetBooksOptions,
 } from "./types";
 
 const BASE_URL = "http://localhost:4730";
-
-const QUERY_KEY = {
-  query: "q",
-} satisfies Record<keyof BooksQueryParams, string>;
 
 export const getBooks = async ({
   signal,

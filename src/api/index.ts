@@ -1,2 +1,2 @@
-export type { Book } from "./types";
+export type { Book, BooksQueryParams } from "./types";
 export { getBooks } from "./books";
