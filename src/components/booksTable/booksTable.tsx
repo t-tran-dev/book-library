@@ -1,6 +1,6 @@
 import { Link, generatePath } from "react-router-dom";
-import type { Book } from "../api";
-import { paths } from "../routes";
+import type { Book } from "../../api";
+import { paths } from "../../routes";
 
 type BookTableProps = {
   books: Book[];

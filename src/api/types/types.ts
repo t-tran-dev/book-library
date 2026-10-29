@@ -21,3 +21,17 @@ export type Book = {
   predecessorIsbn?: string | null;
   successorIsbn?: string | null;
 };
+
+export type BooksQueryParams = {
+  query?: string;
+  publisher?: string;
+};
+
+export type GetBooksOptions = BooksQueryParams & {
+  signal?: AbortSignal;
+};
+
+export const QUERY_KEY = {
+  query: "q",
+  publisher: "publisher",
+} satisfies Record<keyof BooksQueryParams, string>;
