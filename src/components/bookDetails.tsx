@@ -1,6 +1,7 @@
 import { Link, generatePath } from "react-router-dom";
 import { useFetchBook } from "../hooks";
 import { paths } from "../routes";
+import { formatPrice } from "../utils";
 
 type BookDetailsProps = {
   isbn: string;
@@ -40,6 +41,13 @@ export const BookDetails = ({ isbn }: BookDetailsProps) => {
             </li>
             <li>
               <strong>Pages:</strong> {book.numPages ?? "—"}
+            </li>
+
+            <li>
+              <strong>Price:</strong>{" "}
+              {book.price !== undefined
+                ? formatPrice(book.price, book.currency)
+                : "—"}
             </li>
           </ul>
 

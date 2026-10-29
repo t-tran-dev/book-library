@@ -1,2 +1,7 @@
-export type { Book, BookQueryParams, BooksQueryParams } from "./types";
+export type {
+  Book,
+  BookQueryParams,
+  BooksQueryParams,
+  Currency,
+} from "./types";
 export { getBook, getBooks } from "./books";

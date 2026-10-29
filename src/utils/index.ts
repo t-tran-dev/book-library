@@ -1,3 +1,4 @@
+export { formatPrice } from "./formatPrice";
 export {
   isRecord,
   isString,
