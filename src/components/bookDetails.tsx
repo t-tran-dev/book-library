@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, generatePath } from "react-router-dom";
 import { useFetchBook } from "../hooks";
 import { paths } from "../routes";
 
@@ -42,6 +42,30 @@ export const BookDetails = ({ isbn }: BookDetailsProps) => {
               <strong>Pages:</strong> {book.numPages ?? "—"}
             </li>
           </ul>
+
+          <div className="series-navigation">
+            {book.predecessorIsbn && (
+              <Link
+                to={generatePath(paths.bookDetail, {
+                  isbn: book.predecessorIsbn,
+                })}
+                className="button button-outline"
+              >
+                Previous volume
+              </Link>
+            )}
+
+            {book.successorIsbn && (
+              <Link
+                to={generatePath(paths.bookDetail, {
+                  isbn: book.successorIsbn,
+                })}
+                className="button button-outline"
+              >
+                Next volume
+              </Link>
+            )}
+          </div>
 
           <Link to={paths.books} className="button button-outline">
             Back
