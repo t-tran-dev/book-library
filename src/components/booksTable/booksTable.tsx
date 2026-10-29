@@ -13,9 +13,9 @@ export const BooksTable: React.FC<BookTableProps> = ({
   loading,
   error,
 }) => {
-  if (loading) return <div>Loading Books...</div>;
+  if (loading) return <div>Lädt Bücher</div>;
   if (error) return <div>{error.message}</div>;
-  if (books.length === 0) return <div>No books found.</div>;
+  if (books.length === 0) return <div>Keine Búcher gefunden.</div>;
 
   const renderedBooks = books.map((book) => (
     <tr key={book.id}>
