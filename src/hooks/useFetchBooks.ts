@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import type { Book } from "../types";
-import { getBooks } from "../api/books";
+import { type Book, getBooks } from "../api";
 
-export const useFetchBooks = () => {
+const DEBOUNCE_DELAY = 300;
+
+export const useFetchBooks = (query: string) => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -14,7 +15,7 @@ export const useFetchBooks = () => {
       setError(null);
 
       try {
-        const booksData = await getBooks(controller.signal);
+        const booksData = await getBooks({ query, signal: controller.signal });
 
         if (!controller.signal.aborted) {
           setBooks(booksData);
@@ -33,12 +34,12 @@ export const useFetchBooks = () => {
         }
       }
     };
-
-    fetchBooks();
+    const debounceTimer = setTimeout(fetchBooks, DEBOUNCE_DELAY);
     return () => {
+      clearTimeout(debounceTimer);
       controller.abort();
     };
-  }, []);
+  }, [query]);
 
   return { error, loading, books };
 };
