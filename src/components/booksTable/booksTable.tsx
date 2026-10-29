@@ -1,25 +1,32 @@
 import { Link, generatePath } from "react-router-dom";
-import type { Book } from "../../api";
+import { type FavoriteBook, FavoriteButton } from "../../features/favorites";
 import { paths } from "../../routes";
 
-type BookTableProps = {
-  books: Book[];
-  loading: boolean;
-  error: Error | null;
+type BooksTableProps = {
+  books: FavoriteBook[];
+  loading?: boolean;
+  error?: Error | null;
+  variant?: "books" | "favorites";
 };
 
-export const BooksTable: React.FC<BookTableProps> = ({
+export const BooksTable: React.FC<BooksTableProps> = ({
   books,
   loading,
   error,
+  variant = "books",
 }) => {
   if (loading) return <div>Lädt Bücher</div>;
   if (error) return <div>{error.message}</div>;
   if (books.length === 0) return <div>Keine Búcher gefunden.</div>;
 
   const renderedBooks = books.map((book) => (
-    <tr key={book.id}>
-      <td>{/* Favorite button goes here */}</td>
+    <tr key={book.isbn}>
+      <td>
+        <FavoriteButton
+          book={book}
+          variant={variant === "favorites" ? "remove" : "toggle"}
+        />
+      </td>
       <td>{book.title}</td>
       <td>{book.isbn}</td>
       <td>{book.author ?? "—"}</td>
