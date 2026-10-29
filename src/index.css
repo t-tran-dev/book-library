@@ -70,3 +70,31 @@ main .fav-btn {
   gap: 1rem;
   margin-bottom: 1rem;
 }
+.sort-button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.sort-button:hover {
+  color: var(--primary);
+}
+
+.sort-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.sort-indicator {
+  color: var(--primary);
+  font-size: 1.4rem;
+  line-height: 1;
+}
