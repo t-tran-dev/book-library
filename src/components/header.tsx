@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { paths } from "../routes/paths";
+import { paths } from "../routes";
 
 export const Header = () => {
   return (
