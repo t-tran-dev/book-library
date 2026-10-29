@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { paths } from "../routes/paths";
+
 export const BookDetailPage = () => {
   return (
     <main className="container">
@@ -29,9 +32,9 @@ export const BookDetailPage = () => {
             </li>
           </ul>
 
-          <a href="/" className="button button-outline">
+          <Link to={paths.books} className="button button-outline">
             Back
-          </a>
+          </Link>
         </div>
 
         <div className="column column-33">

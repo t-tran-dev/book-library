@@ -1,3 +1,6 @@
+import { generatePath, Link } from "react-router-dom";
+import { paths } from "../routes/paths";
+
 const sampleFavorites = [
   {
     isbn: "9780747532699",
@@ -77,9 +80,12 @@ export const FavoritesPage = () => {
                   <td>{book.author}</td>
                   <td>{book.publisher}</td>
                   <td>
-                    <a href={`/books/${book.isbn}`} className="button">
+                    <Link
+                      to={generatePath(paths.bookDetail, { isbn: book.isbn })}
+                      className="button"
+                    >
                       Detail
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               ))}
